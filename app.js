@@ -34,12 +34,14 @@ const http = require('http');
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
-        return res.end('This is home page');
-    } 
-		if (req.url === '/login') {
-        return res.end('This is login page');
-    } 
-    res.end('page not found :(');
+        res.writeHead(200, { 'Content-Type': 'text/html' }); //MIME type //這串是告訴瀏覽器回傳內容的類型
+        return res.end('<h1>This is Home page</h1>');
+    }
+    if (req.url === '/login') {
+        res.writeHead(200, { 'Content-Type': 'text/html' }); //MIME type
+        return res.end('<h1>This is Login page</h1>');
+    }
+	res.end();
 });
 
 server.listen(3000, () => {
