@@ -3,20 +3,12 @@
 // 第一個區塊 內建模組
 const path = require('path');
 const http = require('http');
-
+const url = require('url');
 
 // 第二個區塊 第三方模組(套件)
 
-
 // 第三個區塊 自建模組
-const hello = require('./hello');
 
-////////////////////////////////////////////////////////////////
-
-hello.sayHello();
-console.log(hello.title); 
-
-const http = require('http');
 
 ///////////////////////////使用內建模組 http 來建立 Web server/////////////////////////////////
 
@@ -47,3 +39,6 @@ const server = http.createServer((req, res) => {
 server.listen(3000, () => {
 	console.log('Web Server is running on port 3000');
 });
+
+///////////////////////認識 URL 的狀態資訊（內建模組 url）/////////////////////////////////////
+console.log(url.parse('https://www.youtube.com/watch?v=ssZTiB8yg94&t=43s'));
