@@ -4,6 +4,7 @@
 const path = require('path');
 const http = require('http');
 
+
 // 第二個區塊 第三方模組(套件)
 
 
@@ -13,6 +14,34 @@ const hello = require('./hello');
 ////////////////////////////////////////////////////////////////
 
 hello.sayHello();
-
 console.log(hello.title); 
 
+const http = require('http');
+
+///////////////////////////使用內建模組 http 來建立 Web server/////////////////////////////////
+
+/*  const server = http.createServer((req, res) => {
+	console.log('第一個參數是瀏覽器對 web server 的 request', req);
+	console.log('第二個參數是 web 要response 給瀏覽器的內容', res);
+	res.end();
+});
+    server.listen(3000, () => {
+        console.log('Web Server is running on port 3000');
+    });
+*/
+
+///////////////////////依據不同的 request 的 url，回應不同的內容/////////////////////////////////////
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        return res.end('This is home page');
+    } 
+		if (req.url === '/login') {
+        return res.end('This is login page');
+    } 
+    res.end('page not found :(');
+});
+
+server.listen(3000, () => {
+	console.log('Web Server is running on port 3000');
+});
